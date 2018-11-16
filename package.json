@@ -1,0 +1,21 @@
+{
+  "name": "node_js_1st_project",
+  "version": "1.0.0",
+  "description": "this is my first node js application!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "node-training"
+  },
+  "author": "Danilo Raphael Condo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.6"
+  }
+}
