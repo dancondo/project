@@ -14,3 +14,13 @@ exports.edit = (request, response, next) => {
         });
     })
 }
+exports.update = (request, response, next) => {
+    Product.find(request.params.id, product => {
+        console.log(product);
+        console.log(request.body);
+        response.redirect(`/product/${product.id ? product.id : '10'}`);
+    })  
+}
+exports.destroy = (request, response, next) => {
+    
+}
