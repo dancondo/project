@@ -6749,3 +6749,15 @@ label.panel-block {
 .navbar {
   padding: 8px;
   box-shadow: 0 1px 1px -1px #333; }
+
+aside.menu {
+  padding-top: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 300px;
+  position: fixed;
+  left: 0;
+  height: 100%; }
+
+.wrapper {
+  margin-left: 300px; }

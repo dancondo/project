@@ -1,4 +1,4 @@
-nav.navbar(role="navigation", aria-label="main navigation")
+nav.navbar.is-dark(role="navigation", aria-label="main navigation")
     .navbar-brand
         a.navbar-item(href="/").
             Node Marketplace
@@ -8,8 +8,10 @@ nav.navbar(role="navigation", aria-label="main navigation")
             span(aria-hidden="true")
     #navbarItems.navbar-menu
         .navbar-start
-            a.navbar-item(href="/").
-                Home
+            a.navbar-item(href="/products").
+                Products
+            a.navbar-item(href="/admin").
+                Admin
         .navbar-end
             a.navbar-item(href="/cart")
                 i.fas.fa-shopping-cart
