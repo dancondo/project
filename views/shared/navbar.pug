@@ -1,0 +1,22 @@
+nav.navbar(role="navigation", aria-label="main navigation")
+    .navbar-brand
+        a.navbar-item(href="/").
+            Node Marketplace
+        a.navbar-burger.burger(role="button", aria-label="menu", aria-expanded="false", data-target="navbarItems")
+            span(aria-hidden="true")
+            span(aria-hidden="true")
+            span(aria-hidden="true")
+    #navbarItems.navbar-menu
+        .navbar-start
+            a.navbar-item(href="/").
+                Home
+        .navbar-end
+            a.navbar-item(href="/cart")
+                i.fas.fa-shopping-cart
+                | &nbsp Cart
+            //- .navbar-item
+            //-     .buttons
+            //-         a.button.is-primary
+            //-             strong Sign up
+            //-         a.button.is-light. 
+            //-             Log in

@@ -1,0 +1,15 @@
+form
+    .field
+        label.label.
+            Product Name
+        .control
+            input.input(type="text", name="name", placeholder="Product Name", value=product ? product.id : '')
+    .field
+        label.label.
+            Price
+        .control
+            input.input(type="number" step="0.01")
+    .field
+        .control
+            button.button.is-success.
+                Create Product
