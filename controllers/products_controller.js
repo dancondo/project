@@ -1,6 +1,5 @@
 const Product = require('../models/products');
 const db = require('../database');
-
 exports.index = (request, response, next) => {
     Product.all(products => {
         response.render('products/index', {
