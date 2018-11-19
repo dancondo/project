@@ -30,16 +30,28 @@ exports.update = (request, response, next) => {
             .then(data => {
                 response.redirect(`/products/${data.id}`)
             })
-            .catch(error => {
-                console.log(error);
-                response.render('pages/404');
-            })
+        })
+        .catch(error => {
+            console.log(error);
+            response.render('pages/404');
         })
     ;
 }
 exports.destroy = (request, response, next) => {
-
+    console.log('foo')
+    setProduct(request, response)
+        .then(product => {
+            product.destroy()
+            .then(data => {
+                response.redirect('/products')
+            })
+        })
+        .catch(error => {
+            console.log(error);
+            response.render('pages/404');
+        })
 }
+
 const setProduct = (request, response) => {
     return Product.findByPk(request.params.id)
         .then(data => {
