@@ -1,24 +1,26 @@
-const products = [{ name: 'foo' }, { name: 'bar' }];
-module.exports = class Product {
-    constructor(attributes = {}) {
-        this.title = attributes.title
-    };
-    static all(callback) {
-        callback(products);
-    };
-    static where(argName, arg) {
-        console.log(argName, arg);
-    };
-    static find(id, callback) {
-        callback({ id: id, name: `Prod${id}`})
-    };
-    save() {
-        products.push(this);
-    };
-    update() {
+const Sequelize = require('sequelize');
+const sequelize = require('../database/index');
 
-    };
-    destroy() {
+const Product = sequelize.define('product', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    price: {
+        type: Sequelize.DOUBLE
+    },
+    imageURL: {
+        type: Sequelize.STRING
+    },
+    description: {
+        type: Sequelize.TEXT
+    }
+});
 
-    };
-}
+module.exports = Product;

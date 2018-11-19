@@ -1,6 +1,7 @@
 extends ../layouts/default.pug
 
 block bodyContent 
-    each product in products
-        h1.
-            #{product.name}
+    ul
+        each product in products
+            li.
+                #{product.id}) #{product.name}
