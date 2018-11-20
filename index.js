@@ -8,6 +8,7 @@ const dotenv = require('dotenv').config();
 const adminRoutes = require('./routes/admin');
 const adminProductRoutes = require('./routes/admin/product')
 const productRoutes = require('./routes/product');
+const cartRoutes = require('./routes/cart')
 const pageRoutes = require('./routes/page');
 
 // global use
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/admin', adminRoutes);
 app.use('/admin/products', adminProductRoutes);
 app.use('/products', productRoutes);
+app.use('/cart', cartRoutes);
 app.use('/', pageRoutes);
 
 // Database Sync & App start
