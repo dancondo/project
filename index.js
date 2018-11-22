@@ -9,8 +9,8 @@ const mongoose = require('mongoose')
 
 // routes imports
 // const adminRoutes = require('./routes/admin');
-// const adminProductRoutes = require('./routes/admin/product')
-// const productRoutes = require('./routes/product');
+const adminProductRoutes = require('./routes/admin/product')
+const productRoutes = require('./routes/product');
 // const cartRoutes = require('./routes/cart')
 // const pageRoutes = require('./routes/page');
 
@@ -22,12 +22,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // routes registering
 // app.use('/admin', adminRoutes);
-// app.use('/admin/products', adminProductRoutes);
-// app.use('/products', productRoutes);
+app.use('/admin/products', adminProductRoutes);
+app.use('/products', productRoutes);
 // app.use('/cart', cartRoutes);
 // app.use('/', pageRoutes);
 
-mongoose.connect(`mongodb+srv://dancondo:${process.env.MONGO_DB_PASSWORD}@nodepractice-ynq4j.mongodb.net/test?retryWrites=true`)
+mongoose.connect(`mongodb+srv://dancondo:${process.env.MONGO_DB_PASSWORD}@nodepractice-ynq4j.mongodb.net/shop?retryWrites=true`)
     .then(reponse => {
         app.listen(3000);
     })

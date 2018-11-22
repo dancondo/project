@@ -1,14 +1,13 @@
 const Product = require('../../models/products');
 
 exports.new = (request, response, next) => {
-    response.render('admin/products/new', { product: new Product });
+    response.render('admin/products/new', { product: {} });
 }
 exports.create = (request, response, next) => {
     const product = new Product(productParams(request.body));
     product.save()
-        .then(data => {
-            console.log(data)
-            response.redirect(`/products/${data._id}`)
+        .then(() => {
+            response.redirect(`/products/${product.id}`);
         })
         .catch(error => {
             console.log(error)
@@ -27,8 +26,8 @@ exports.update = (request, response, next) => {
     setProduct(request, response)
         .then(product => {
             product.update(productParams(request.body))
-                .then(data => {
-                    response.redirect(`/products/${data.id}`)
+                .then(() => {
+                    response.redirect(`/products/${product.id}`)
                 })
             ;
         })
@@ -39,7 +38,7 @@ exports.update = (request, response, next) => {
     ;
 }
 exports.destroy = (request, response, next) => {
-    Product.destroy(request.params.id)
+    Product.findByIdAndRemove(request.params.id)
         .then(data => {
             response.redirect('/products')
         })
@@ -51,7 +50,7 @@ exports.destroy = (request, response, next) => {
 }
 
 const setProduct = (request, response) => {
-    return Product.find(request.params.id)
+    return Product.findById(request.params.id)
         .then(data => {
             return data;
         })
@@ -65,6 +64,6 @@ const productParams = (params) => {
         name: params.name,
         price: params.price,
         description: params.description,
-        imageURL: params.imageURL
+        imageUrl: params.imageUrl
     }
 }
