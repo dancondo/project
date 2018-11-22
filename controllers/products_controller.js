@@ -1,21 +1,22 @@
 const Product = require('../models/products');
 
 exports.index = (request, response, next) => {
-    Product.findAll()
+    Product.all()
         .then(data => {
-            response.render('products/index', { products: data })
+            response.render('products/index', { products: data });
         })
         .catch(error => {
-            response.render('pages/404')
+            console.log(error);
         })
     ;
 }
 exports.show = (request, response, next) => {
-    Product.findByPk(request.params.id)
+    Product.find(request.params.id)
         .then(data => {
-            response.render('products/show', { product: data });
+            response.render('products/show', { product: data })
         })
         .catch(error => {
             console.log(error)
         })
+    ;
 }

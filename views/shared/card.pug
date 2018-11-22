@@ -1,0 +1,15 @@
+a(href=`/products/${product._id}`)
+    .card
+        .card-image
+            .figure
+                img(src="https://bulma.io/images/placeholders/1280x960.png")
+        .card-content
+            .media
+                .media-content
+                    p.title.is-4.
+                        #{product.name}
+                    p.subtitle.is-6.
+                        $#{product.price}
+            .content.
+                #{product.description}
+                #{product._id}

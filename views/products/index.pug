@@ -1,7 +1,7 @@
 extends ../layouts/default.pug
 
 block bodyContent 
-    ul
+    .columns.is-desktop
         each product in products
-            li.
-                #{product.id}) #{product.name}
+            .column.is-one-third
+                include ../shared/card

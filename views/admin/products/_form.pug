@@ -1,4 +1,4 @@
-form(action=product.id ? `/admin/products/${product.id}/update` : `/admin/products` method='POST')
+form(action=product._id ? `/admin/products/${product._id}/update` : `/admin/products` method='POST')
     .field
         label.label.
             Product Name
@@ -18,7 +18,9 @@ form(action=product.id ? `/admin/products/${product.id}/update` : `/admin/produc
         label.label.
             Description
         .control
-            textarea.textarea(name="description", value=product.description)
+            textarea.textarea(name="description").
+                #{product.description}
+
     .field
         .control
             button.button.is-success(type="submit").

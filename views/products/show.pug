@@ -3,7 +3,11 @@ extends ../layouts/default.pug
 block bodyContent 
     h1.
         #{product.name}
-    form(action=product.id ? `/admin/products/${product.id}/destroy` : `/admin/products` method='POST')
+    h1.
+        #{product._id}
+    h1.
+        #{product.description}
+    form(action=`/admin/products/${product._id}/destroy` method='POST')
         button.button.is-danger.delete-btn(type="submit").
             Delete Product
             

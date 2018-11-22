@@ -4,10 +4,11 @@ exports.new = (request, response, next) => {
     response.render('admin/products/new', { product: new Product });
 }
 exports.create = (request, response, next) => {
-    const product = Product.build(productParams(request.body))    
-        .save()
+    const product = new Product(productParams(request.body));
+    product.save()
         .then(data => {
-            response.redirect(`/products/${data.id}`)
+            console.log(data)
+            response.redirect(`/products/${data._id}`)
         })
         .catch(error => {
             console.log(error)
@@ -23,13 +24,13 @@ exports.edit = (request, response, next) => {
     ;
 }
 exports.update = (request, response, next) => {
-    console.log('bar')
     setProduct(request, response)
         .then(product => {
             product.update(productParams(request.body))
-            .then(data => {
-                response.redirect(`/products/${data.id}`)
-            })
+                .then(data => {
+                    response.redirect(`/products/${data.id}`)
+                })
+            ;
         })
         .catch(error => {
             console.log(error);
@@ -38,31 +39,24 @@ exports.update = (request, response, next) => {
     ;
 }
 exports.destroy = (request, response, next) => {
-    console.log('foo')
-    setProduct(request, response)
-        .then(product => {
-            product.destroy()
-            .then(data => {
-                response.redirect('/products')
-            })
+    Product.destroy(request.params.id)
+        .then(data => {
+            response.redirect('/products')
         })
         .catch(error => {
             console.log(error);
             response.render('pages/404');
         })
+    ;
 }
 
 const setProduct = (request, response) => {
-    return Product.findByPk(request.params.id)
+    return Product.find(request.params.id)
         .then(data => {
-            if(data) {
-                return data
-            }
-            return response.render('pages/404');
+            return data;
         })
         .catch(error => {
-            console.log(error)
-            return response.render('pages/404');
+            response.render('pages/404');
         })
     ;
 };
